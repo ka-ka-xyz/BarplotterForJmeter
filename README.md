@@ -14,6 +14,13 @@ devtools::install_github("ka-ka-xyz/BarplotterForJmeter")
 
 ### Generate Barplot Graph
 
+First, download below sample data and save into work directory.
+
+- sample/resources/v10_result.jtl
+- sample/resources/v11_result.jtl
+
+Then, execute below commands.
+
 ```
 library(BarplotterForJmeter)
 results <- jbp_read(c(v10="sample/resources/v10_result.jtl", v11="sample/resources/v11_result.jtl"))

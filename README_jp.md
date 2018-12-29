@@ -14,6 +14,13 @@ devtools::install_github("ka-ka-xyz/BarplotterForJmeter")
 
 ### バープロットを描く
 
+まず、以下のサンプルデータをワークディレクトリへ保存します。
+
+- sample/resources/v10_result.jtl
+- sample/resources/v11_result.jtl
+
+次に以下のコマンドを実行します。
+
 ```
 library(BarplotterForJmeter)
 results <- jbp_read(c(v10="sample/resources/v10_result.jtl", v11="sample/resources/v11_result.jtl"))
