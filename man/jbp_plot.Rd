@@ -4,9 +4,9 @@
 \alias{jbp_plot}
 \title{plot barplot for dataframe exported from jmeter.}
 \usage{
-jbp_plot(data = data.frame(), horizonal = F, errorbar_type = "",
-  pagesize = 10, pic_prefix = "result_", pic_width = 20,
-  pic_height = 20, pic_dpi = 300, title = "Result",
+jbp_plot(data = data.frame(), horizonal = F, show_value = T,
+  errorbar_type = "", pagesize = 10, pic_prefix = "result_",
+  pic_width = 20, pic_height = 20, pic_dpi = 300, title = "Result",
   xlab = "labels", ylab = "elapsed time (ms)")
 }
 \arguments{

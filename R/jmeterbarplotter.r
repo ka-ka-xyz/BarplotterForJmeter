@@ -38,6 +38,7 @@ jbp_read <- function(files = c(), file_encoding = "UTF-8",
 #' @param data dataframe returned from jbp_read
 #' @importFrom dplyr distinct
 #' @return DescTools MeanCI.
+#' @export
 jbp_aggr <- function(data = data.frame()) {
   aggr <- aggregate(list(elapsed = data[["elapsed"]]),
     FUN = function(x) c(sd = sd(x), ci = DescTools::MeanCI(x)),
