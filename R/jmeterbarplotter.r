@@ -23,7 +23,7 @@ jbp_read <- function(files = c(), file_encoding = "UTF-8",
     tmp <- transform(tmp, alias = alias)
     tmp <- tmp[, cols]
     tmp$alias <- factor(tmp$alias)
-    tmp$label <- factor(tmp[[label]])
+    tmp$label <- tmp[[label]]
     tmp$elapsed <- tmp[[elapsed]]
     if (length(rtn) == 0) {
       rtn <- tmp
@@ -72,11 +72,12 @@ jbp_plot <- function(data = data.frame(),
   pagesize = 10, pic_prefix = "result_", pic_width = 20,
   pic_height = 20, pic_dpi = 300,
   title = "Result", xlab = "labels", ylab = "elapsed time (ms)") {
-  data$label <- reorder(data$label, order = FALSE)
+
+  data <- data[order(data$label), ]
   labeles <- dplyr::distinct(data, data[["label"]])[[1]]
   aliases <- dplyr::distinct(data, data[["alias"]])[[1]]
 
-  aggr <- jmeterbarplotter::jbp_aggr(data)
+  aggr <- BarplotterForJmeter::jbp_aggr(data)
 
   i <- 1
   while ( (i - 1) * pagesize * length(aliases) <=
@@ -135,7 +136,8 @@ jbp_plot <- function(data = data.frame(),
     if (horizonal) {
       plt <- plt + ggplot2::coord_flip()
     }
-    ggplot2::ggsave(filename = paste(pic_prefix, as.character(i), ".png"),
+    ggplot2::ggsave(filename = paste(pic_prefix, as.character(i), ".png",
+      sep = ""),
       plt, width = pic_width, height = pic_height, dpi = pic_dpi, units = "cm")
     i <- i + 1
   }
