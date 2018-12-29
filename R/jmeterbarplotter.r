@@ -67,7 +67,7 @@ jbp_aggr <- function(data = data.frame()) {
 #' }
 #' @export
 jbp_plot <- function(data = data.frame(),
-  horizonal = F,
+  horizonal = F, show_value = T,
   errorbar_type = "",
   pagesize = 10, pic_prefix = "result_", pic_width = 20,
   pic_height = 20, pic_dpi = 300,
@@ -110,17 +110,22 @@ jbp_plot <- function(data = data.frame(),
     alias <- ss[["alias"]]
     meanval <- ss[["elapsed"]][, "ci.mean"]
 
-    if (horizonal) {
-      text <- ggplot2::geom_text(
-        ggplot2::aes(label = round(meanval)),
-          position = position_dodge(width = 0.9),
-          hjust = -0.3, size = 3)
+    if (show_value) {
+      if (horizonal) {
+        text <- ggplot2::geom_text(
+          ggplot2::aes(label = round(meanval)),
+            position = position_dodge(width = 0.9),
+            hjust = -0.3, size = 3)
+      } else {
+        text <- ggplot2::geom_text(
+          ggplot2::aes(label = round(meanval)),
+            position = position_dodge(width = 0.9),
+            vjust = -0.3, size = 3)
+      }
     } else {
-      text <- ggplot2::geom_text(
-        ggplot2::aes(label = round(meanval)),
-          position = position_dodge(width = 0.9),
-          vjust = -0.3, size = 3)
+      text <- NULL
     }
+
 
     plt <- ggplot2::ggplot(ss,
       ggplot2::aes(y = meanval, x = ss$label,
