@@ -56,7 +56,7 @@ jbp_plot(results, pagesize = 5, pic_prefix = "separate_")
 引数`errorbar_type = "sd"`を指定することで、エラーバー(標準偏差)を追加することができます。
 
 ```
-jbp_plot(results, errorbar_type = "sd", pic_prefix = "errorbar_sd")
+jbp_plot(results, errorbar_type = "sd", title = "Barplot With Errorbar", pic_prefix = "errorbar_sd")
 ```
 
 ![errorbar_sd_1.png](readme_resource/errorbar_sd_1.png)
@@ -66,7 +66,7 @@ jbp_plot(results, errorbar_type = "sd", pic_prefix = "errorbar_sd")
 引数`errorbar_type = "ci"`を指定することで、エラーバー(95% 信頼区間)を追加することができます。
 
 ```
-jbp_plot(results, errorbar_type = "ci", pic_prefix = "errorbar_ci")
+jbp_plot(results, errorbar_type = "ci", title = "Barplot With Errorbar", pic_prefix = "errorbar_ci")
 ```
 
 ![errorbar_ci_1.png](readme_resource/errorbar_ci_1.png)
@@ -76,7 +76,7 @@ jbp_plot(results, errorbar_type = "ci", pic_prefix = "errorbar_ci")
 引数`horizonal = T`を指定することで、水平バープロットを出力することも可能です。
 
 ```
-jbp_plot(results, horizonal = T, pic_prefix = "horizonal_")
+jbp_plot(results, horizonal = T, title = "Horizonal Barplot", pic_prefix = "horizonal_")
 ```
 
 ![horizonal_1.png](readme_resource/horizonal_1.png)

@@ -56,7 +56,7 @@ These commands generate `separate_1.png` and `separate_2.png`.
 You can add errorbar (standard deviation) into graph with argument `errorbar_type = "sd"`.
 
 ```
-jbp_plot(results, errorbar_type = "sd", pic_prefix = "errorbar_sd")
+jbp_plot(results, errorbar_type = "sd", title = "Barplot With Errorbar", pic_prefix = "errorbar_sd")
 ```
 
 ![errorbar_sd_1.png](readme_resource/errorbar_sd_1.png)
@@ -66,7 +66,7 @@ jbp_plot(results, errorbar_type = "sd", pic_prefix = "errorbar_sd")
 You can add errorbar (95% confidence interval) into graph with argument `errorbar_type = "ci"`.
 
 ```
-jbp_plot(results, errorbar_type = "ci", pic_prefix = "errorbar_ci")
+jbp_plot(results, errorbar_type = "ci", title = "Barplot With Errorbar", pic_prefix = "errorbar_ci")
 ```
 
 ![errorbar_ci_1.png](readme_resource/errorbar_ci_1.png)
@@ -76,7 +76,7 @@ jbp_plot(results, errorbar_type = "ci", pic_prefix = "errorbar_ci")
 You can generate horizonal barplot graph with argument `horizonal = T`.
 
 ```
-jbp_plot(results, horizonal = T, pic_prefix = "horizonal_")
+jbp_plot(results, horizonal = T, title = "Horizonal Barplot", pic_prefix = "horizonal_")
 ```
 
 ![horizonal_1.png](readme_resource/horizonal_1.png)
