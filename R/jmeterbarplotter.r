@@ -2,7 +2,8 @@
 #' @param files file path and alias name of csv file.
 #' @param file_encoding file encoding type. default value is "UTF-8". not required.
 #' @param elapsed column name for "elapsed time". default value is "elapsed". not required.
-#' @param kabek column name for "label". default value is "label". not required.
+#' @param label column name for "label". default value is "label". not required.
+#' @param file_separator separator of filepath. default is ";|:", not requred.
 #' @return The dataframe generated from csv.
 #' @examples
 #' \dontrun{
@@ -11,24 +12,26 @@
 #' }
 #' @export
 jbp_read <- function(files = c(), file_encoding = "UTF-8",
-    elapsed = "elapsed", label = "label") {
+    elapsed = "elapsed", label = "label", file_separator = ";|:") {
   aliases <- names(files)
   cols <- c("alias", "elapsed", "label", "success")
   rtn <- data.frame()
   for (i in 1:length(aliases)) {
     alias <- as.character(aliases[[i]])
-    file <- files[[alias]]
-    tmp <- utils::read.table(file, sep = ",", fileEncoding = file_encoding,
-      head = T)
-    tmp <- transform(tmp, alias = alias)
-    tmp <- tmp[, cols]
-    tmp$alias <- factor(tmp$alias)
-    tmp$label <- tmp[[label]]
-    tmp$elapsed <- tmp[[elapsed]]
-    if (length(rtn) == 0) {
-      rtn <- tmp
-    } else {
-      rtn <- merge(rtn, tmp, all = T)
+    filelist <- strsplit(files[[alias]], file_separator)
+    for (file in filelist[[1]]) {
+      tmp <- utils::read.table(file, sep = ",", fileEncoding = file_encoding,
+        head = T)
+      tmp <- transform(tmp, alias = alias)
+      tmp <- tmp[, cols]
+      tmp$alias <- factor(tmp$alias)
+      tmp$label <- tmp[[label]]
+      tmp$elapsed <- tmp[[elapsed]]
+      if (length(rtn) == 0) {
+        rtn <- tmp
+      } else {
+        rtn <- merge(rtn, tmp, all = T)
+      }
     }
   }
   return(rtn)
