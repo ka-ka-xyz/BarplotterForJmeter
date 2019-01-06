@@ -5,7 +5,7 @@
 \title{read csv files exported from jmeter.}
 \usage{
 jbp_read(files = c(), file_encoding = "UTF-8", elapsed = "elapsed",
-  label = "label")
+  label = "label", file_separator = ";|:")
 }
 \arguments{
 \item{files}{file path and alias name of csv file.}
@@ -14,7 +14,9 @@ jbp_read(files = c(), file_encoding = "UTF-8", elapsed = "elapsed",
 
 \item{elapsed}{column name for "elapsed time". default value is "elapsed". not required.}
 
-\item{kabek}{column name for "label". default value is "label". not required.}
+\item{label}{column name for "label". default value is "label". not required.}
+
+\item{file_separator}{separator of filepath. default is ";|:", not requred.}
 }
 \value{
 The dataframe generated from csv.
