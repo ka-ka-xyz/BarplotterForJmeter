@@ -18,8 +18,12 @@ jbp_read <- function(files = c(), file_encoding = "UTF-8",
   rtn <- data.frame()
   for (i in 1:length(aliases)) {
     alias <- as.character(aliases[[i]])
-    filelist <- strsplit(files[[alias]], file_separator)
-    for (file in filelist[[1]]) {
+    filelist <- strsplit(files[[alias]], file_separator)[[1]]
+    if (length(filelist) < 2) {
+      filelist <- Sys.glob(files[[alias]])
+    }
+    for (file in filelist) {
+      print(paste("Read file:", file, " as ", alias))
       tmp <- utils::read.table(file, sep = ",", fileEncoding = file_encoding,
         head = T)
       tmp <- transform(tmp, alias = alias)
